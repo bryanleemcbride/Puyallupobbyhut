@@ -10,6 +10,8 @@
             background: #b3d4fc;
             overflow: hidden;
             position: relative;
+            height: 100vh;
+            margin: 0;
         }
         .fish {
             position: absolute;
@@ -70,7 +72,7 @@
         function createFish() {
             const fish = document.createElement('div');
             fish.classList.add('fish');
-            fish.style.left = `${Math.random() * 100}%`;
+            fish.style.left = `${Math.random() * 100}vw`;
             fish.style.animationDuration = `${Math.random() * 10 + 5}s`;
             fish.style.top = `${Math.random() * 100}vh`;
             document.body.appendChild(fish);
@@ -80,6 +82,11 @@
         }
 
         setInterval(createFish, 2000);
+
+        // Create initial set of fish
+        for (let i = 0; i < 5; i++) {
+            createFish();
+        }
     </script>
 </body>
 </html>
