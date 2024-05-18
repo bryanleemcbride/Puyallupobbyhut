@@ -5,8 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puyallup Hobby Hut</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #b3d4fc;
+            overflow: hidden;
+            position: relative;
+        }
+        .fish {
+            position: absolute;
+            bottom: -50px;
+            width: 50px;
+            height: 50px;
+            background: url('https://www.clipartmax.com/png/full/22-223281_clown-fish-clown-fish-cartoon.png') no-repeat;
+            background-size: contain;
+            animation: swim linear infinite;
+        }
+        @keyframes swim {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(100%);
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
+<body>
     <header class="bg-blue-600 text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-2xl">Puyallup Hobby Hut</h1>
@@ -19,10 +43,43 @@
         </div>
     </header>
     <main class="container mx-auto p-4">
-        <h2 class="text-3xl font-bold mb-4">Welcome to Puyallup Hobby Hut!</h2>
-        <p class="mb-4">Your one-stop shop for all your hobby needs in Puyallup. From model kits to crafting supplies, we have it all!</p>
+        <section class="bg-blue-100 p-6 rounded-lg shadow-lg mb-8">
+            <h2 class="text-4xl font-bold text-blue-600 mb-4">Welcome to Puyallup Hobby Hut!</h2>
+            <p class="text-lg mb-4">We are a family passionate about sharing our hobbies with the world. Join us as we explore and create together.</p>
+            <img src="https://source.unsplash.com/featured/?hobby" alt="Hobby Image" class="w-full h-64 object-cover rounded-lg">
+        </section>
         <section>
-            <h3 class="text-2xl font-semibold mb-2">Featured Products</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <h3 class="text-3xl font-semibold mb-4">Featured Products</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Sample Product -->
-                <div class="bg-white p-4 rounded 
+                <div class="bg-white p-4 rounded shadow hover:shadow-lg transition-shadow duration-300">
+                    <img src="https://source.unsplash.com/random/400x300?product" alt="Product Image" class="w-full h-48 object-cover rounded mb-4">
+                    <h4 class="text-xl font-semibold">Product Name</h4>
+                    <p class="text-gray-700">Brief description of the product.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-blue-600 text-white p-4 mt-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Puyallup Hobby Hut. All rights reserved.</p>
+            <p>Contact us: <a href="mailto:info@puyalluphobbyhut.com" class="underline">info@puyalluphobbyhut.com</a></p>
+        </div>
+    </footer>
+    <script>
+        function createFish() {
+            const fish = document.createElement('div');
+            fish.classList.add('fish');
+            fish.style.left = `${Math.random() * 100}%`;
+            fish.style.animationDuration = `${Math.random() * 10 + 5}s`;
+            fish.style.top = `${Math.random() * 100}vh`;
+            document.body.appendChild(fish);
+            fish.addEventListener('animationend', () => {
+                fish.remove();
+            });
+        }
+
+        setInterval(createFish, 2000);
+    </script>
+</body>
+</html>
